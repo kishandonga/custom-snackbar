@@ -5,6 +5,7 @@ package com.kishandonga.snackbar
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import com.google.android.material.snackbar.SnackbarContentLayout
 class CustomSnackbar(private val context: Context) {
 
     private var textColor: Int = Color.WHITE
+    private var actionTextColor: Int = Color.WHITE
     private var duration: Int = Snackbar.LENGTH_SHORT
     private var drawable = GradientDrawable()
     private var message: String = ""
@@ -30,15 +32,25 @@ class CustomSnackbar(private val context: Context) {
     private var customViewAction: ((View) -> Unit)? = null
     private var buttonName: String = ""
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var backgroundColor: Int = 0
+    private var backgroundColor: Int = Color.TRANSPARENT
     private var borderWidth: Int = 0
-    private var borderColor: Int = 0
+    private var borderColor: Int = Color.TRANSPARENT
     private var cornerRadius: Float = -1f
     private lateinit var snackbar: Snackbar
     private var coordinateView: View? = null
+    private var typeFaceTextView: Typeface? = null
+    private var typeFaceButton: Typeface? = null
 
     constructor(context: Context, view: View) : this(context) {
         coordinateView = view
+    }
+
+    fun textTypeface(textTypeface: Typeface) {
+        typeFaceTextView = textTypeface
+    }
+
+    fun actionTypeface(actionTypeface: Typeface) {
+        typeFaceButton = actionTypeface
     }
 
     fun withCustomView(customViewAction: ((View) -> Unit)?) {
@@ -49,9 +61,9 @@ class CustomSnackbar(private val context: Context) {
         withAction(context.getString(resId), action)
     }
 
-    fun withAction(buttonName: String, action: (Snackbar) -> Unit) {
+    fun withAction(actionText: String, action: (Snackbar) -> Unit) {
         this.action = action
-        this.buttonName = buttonName
+        this.buttonName = actionText
     }
 
     fun paddingRes(@DimenRes dimenId: Int) {
@@ -115,7 +127,12 @@ class CustomSnackbar(private val context: Context) {
         this.textColor = color
     }
 
-    fun build(): CustomSnackbar {
+    //TODO: Pending....
+    fun actionTextColor(actionTextColor: Int) {
+        this.actionTextColor = actionTextColor
+    }
+
+    fun show(): CustomSnackbar {
         if (coordinateView != null && coordinateView is CoordinatorLayout) {
             makeSnackbar(coordinateView!!)
         } else {
@@ -166,7 +183,13 @@ class CustomSnackbar(private val context: Context) {
             val contentLayoutIterator = snackContentLayout.children.iterator()
             val tvSnackbarTextView = contentLayoutIterator.next() as AppCompatTextView
             tvSnackbarTextView.setTextColor(textColor)
+            if (typeFaceTextView != null) {
+                tvSnackbarTextView.typeface = typeFaceTextView
+            }
             val btnSnackbarActionButton = contentLayoutIterator.next() as AppCompatButton
+            if (typeFaceButton != null) {
+                btnSnackbarActionButton.typeface = typeFaceButton
+            }
 
             if (action != null) {
                 snackbar.setAction(buttonName) {
@@ -182,7 +205,7 @@ class CustomSnackbar(private val context: Context) {
 
     inline fun show(func: CustomSnackbar.() -> Unit): CustomSnackbar {
         this.func()
-        return this.build()
+        return this.show()
     }
 
     private fun Int.toPx(context: Context): Float {

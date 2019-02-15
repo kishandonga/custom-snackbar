@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">custom-snackbar</string>
+    <string name="lbl_appcompat_theme">AppCompat Theme</string>
+    <string name="lbl_material_theme">Material Theme</string>
+    <string name="lbl_with_coordinator_layout">With Coordinator Layout</string>
+    <string name="lbl_without_coordinator_layout">Without Coordinator Layout</string>
+    <string name="lbl_enter_message">Enter Message</string>
+    <string name="lbl_text_color">Text Color</string>
+    <string name="lbl_background_color">Background Color</string>
+    <string name="lbl_corner_radius">Corner Radius</string>
+    <string name="lbl_dash">&#160;&#160;-&#160;&#160;</string>
+    <string name="lbl_zero">0</string>
+    <string name="lbl_border_color">Border Color</string>
+    <string name="lbl_border_width">Border Width</string>
+    <string name="lbl_length_indefinite">LENGTH_INDEFINITE</string>
+    <string name="lbl_length_short">LENGTH_SHORT</string>
+    <string name="lbl_length_long">LENGTH_LONG</string>
+    <string name="lbl_time_duration">Time Duration</string>
+    <string name="lbl_select_typeface">Select Typeface</string>
+    <string name="lbl_bold_italic">BOLD_ITALIC</string>
+    <string name="lbl_italic">ITALIC</string>
+    <string name="lbl_bold">BOLD</string>
+    <string name="lbl_normal">NORMAL</string>
+    <string name="lbl_show">Show</string>
+    <string name="lbl_hide">Hide</string>
+    <string name="lbl_show_custom_view">Show Custom View</string>
+    <string name="lbl_show_action_button">Show Action Button</string>
+    <string name="lbl_hide_action_button">Hide Action Button</string>
+    <string name="lbl_with_action">With Action</string>
 </resources>

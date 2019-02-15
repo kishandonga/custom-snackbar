@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/root"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".MainActivity"
-        android:background="@color/layout_bg">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-    <LinearLayout
+    <RadioGroup
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatButton
-                android:text="snack"
-                android:id="@+id/snack"
+        <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbAppCompact"
+                android:text="@string/lbl_appcompat_theme"
+                android:checked="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-                android:text="test"
-                android:id="@+id/test"
+        <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbMaterial"
+                android:text="@string/lbl_material_theme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+    </RadioGroup>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="10dp"
+            android:id="@+id/withCL"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:tint="@android:color/white"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:text="@string/lbl_with_coordinator_layout"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/withoutCL"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_without_coordinator_layout"/>
+
+</LinearLayout>
