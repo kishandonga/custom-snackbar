@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<tools:LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:context=".ui.MainActivity">
 
     <RadioGroup
             android:layout_marginTop="10dp"
@@ -29,16 +30,23 @@
 
     <androidx.appcompat.widget.AppCompatButton
             android:layout_marginTop="10dp"
-            android:id="@+id/withCL"
+            android:id="@+id/btnWithCL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lbl_with_coordinator_layout"/>
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/withoutCL"
+            android:id="@+id/btnWithoutCL"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/lbl_without_coordinator_layout"/>
 
-</LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCustomView"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_with_custom_view"/>
+
+</tools:LinearLayout>

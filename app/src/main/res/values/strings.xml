@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">custom-snackbar</string>
+    <string name="app_name">Custom Snackbar</string>
     <string name="lbl_appcompat_theme">AppCompat Theme</string>
     <string name="lbl_material_theme">Material Theme</string>
     <string name="lbl_with_coordinator_layout">With Coordinator Layout</string>
@@ -27,4 +27,7 @@
     <string name="lbl_show_action_button">Show Action Button</string>
     <string name="lbl_hide_action_button">Hide Action Button</string>
     <string name="lbl_with_action">With Action</string>
+    <string name="lbl_hide_custom_view">Hide Custom View</string>
+    <string name="lbl_with_custom_view">With Custom View</string>
+    <string name="lbl_action_button_text_color">Action Button Text Color</string>
 </resources>

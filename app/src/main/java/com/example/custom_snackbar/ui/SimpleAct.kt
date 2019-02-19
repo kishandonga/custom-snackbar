@@ -1,4 +1,4 @@
-package com.example.custom_snackbar
+package com.example.custom_snackbar.ui
 
 import android.content.DialogInterface
 import android.graphics.Color
@@ -6,28 +6,42 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.example.custom_snackbar.R
 import com.example.custom_snackbar.utils.themeConst
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.snackbar.CustomSnackbar
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
-import kotlinx.android.synthetic.main.activity_coordinator_layout.*
 import kotlinx.android.synthetic.main.content_app.*
 
-class CoordinatorLayoutAct : AppCompatActivity() {
+class SimpleAct : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val themeConst = intent.getIntExtra(themeConst, 0)
-        setTheme(if (themeConst == 0) R.style.AppCompat_NoActionBar else R.style.Material_NoActionBar)
+        setTheme(if (themeConst == 0) R.style.AppCompat_ActionBar else R.style.Material_ActionBar)
 
-        setContentView(R.layout.activity_coordinator_layout)
-        setSupportActionBar(toolbar_layout)
-        title = getString(R.string.lbl_with_coordinator_layout)
+        setContentView(R.layout.activity_simple)
+        title = getString(R.string.lbl_without_coordinator_layout)
 
         var textColor = Color.WHITE
         var bgColor = Color.TRANSPARENT
         var borderColor = Color.TRANSPARENT
+        var actionTxtColor = ContextCompat.getColor(this, R.color.colorAccent)
+
+        btnActionTextColor.setOnClickListener {
+            ColorPickerDialog.Builder(this)
+                .setTitle("ColorPicker Dialog")
+                .setPositiveButton(getString(android.R.string.ok), ColorEnvelopeListener { envelope, _ ->
+                    llActionTextColor.setBackgroundColor(envelope.color)
+                    actionTxtColor = envelope.color
+                })
+                .setNegativeButton(getString(android.R.string.cancel)) { di: DialogInterface, _: Int ->
+                    di.cancel()
+                }
+                .show()
+        }
 
         btnTextColor.setOnClickListener {
             ColorPickerDialog.Builder(this)
@@ -127,7 +141,7 @@ class CoordinatorLayoutAct : AppCompatActivity() {
                 else -> Typeface.defaultFromStyle(Typeface.NORMAL)
             }
 
-            snackbar = CustomSnackbar(this, root).show {
+            snackbar = CustomSnackbar(this).show {
                 textTypeface(typeface)
                 actionTypeface(typeface)
                 textColor(textColor)
@@ -137,6 +151,7 @@ class CoordinatorLayoutAct : AppCompatActivity() {
                 padding(sbPadding.progress)
                 cornerRadius(sbCornerRadius.progress.toFloat())
                 duration(timeDuration)
+                actionTextColor(actionTxtColor)
                 message(msg)
                 if (rbWithAction.isChecked) {
                     withAction(android.R.string.ok) {

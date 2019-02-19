@@ -21,8 +21,8 @@ import com.google.android.material.snackbar.SnackbarContentLayout
 
 class CustomSnackbar(private val context: Context) {
 
-    private var textColor: Int = Color.WHITE
-    private var actionTextColor: Int = Color.WHITE
+    private var textColor: Int = ContextCompat.getColor(context, R.color.csb_white)
+    private var actionTextColor: Int = ContextCompat.getColor(context, R.color.colorAccent)
     private var duration: Int = Snackbar.LENGTH_SHORT
     private var drawable = GradientDrawable()
     private var message: String = ""
@@ -35,22 +35,22 @@ class CustomSnackbar(private val context: Context) {
     private var backgroundColor: Int = Color.TRANSPARENT
     private var borderWidth: Int = 0
     private var borderColor: Int = Color.TRANSPARENT
-    private var cornerRadius: Float = -1f
-    private lateinit var snackbar: Snackbar
+    private var cornerRadius: Float = 0f
     private var coordinateView: View? = null
-    private var typeFaceTextView: Typeface? = null
-    private var typeFaceButton: Typeface? = null
+    private var tfTextView: Typeface? = null
+    private var tfActionBtn: Typeface? = null
+    private lateinit var snackbar: Snackbar
 
     constructor(context: Context, view: View) : this(context) {
         coordinateView = view
     }
 
     fun textTypeface(textTypeface: Typeface) {
-        typeFaceTextView = textTypeface
+        tfTextView = textTypeface
     }
 
     fun actionTypeface(actionTypeface: Typeface) {
-        typeFaceButton = actionTypeface
+        tfActionBtn = actionTypeface
     }
 
     fun withCustomView(customViewAction: ((View) -> Unit)?) {
@@ -127,7 +127,6 @@ class CustomSnackbar(private val context: Context) {
         this.textColor = color
     }
 
-    //TODO: Pending....
     fun actionTextColor(actionTextColor: Int) {
         this.actionTextColor = actionTextColor
     }
@@ -155,17 +154,8 @@ class CustomSnackbar(private val context: Context) {
             drawable = snackbarLayout.background as GradientDrawable
         }
 
-        if (cornerRadius != -1f) {
-            drawable.cornerRadius = cornerRadius
-        } else {
-            drawable.cornerRadius = 0f
-        }
-
-        if (borderWidth != 0 && borderColor != 0) {
-            drawable.setStroke(borderWidth, borderColor)
-        } else {
-            drawable.setStroke(0, Color.TRANSPARENT)
-        }
+        drawable.cornerRadius = cornerRadius
+        drawable.setStroke(borderWidth, borderColor)
 
         val pLeft = snackbarLayout.paddingLeft
         val pRight = snackbarLayout.paddingRight
@@ -183,12 +173,13 @@ class CustomSnackbar(private val context: Context) {
             val contentLayoutIterator = snackContentLayout.children.iterator()
             val tvSnackbarTextView = contentLayoutIterator.next() as AppCompatTextView
             tvSnackbarTextView.setTextColor(textColor)
-            if (typeFaceTextView != null) {
-                tvSnackbarTextView.typeface = typeFaceTextView
+            if (tfTextView != null) {
+                tvSnackbarTextView.typeface = tfTextView
             }
             val btnSnackbarActionButton = contentLayoutIterator.next() as AppCompatButton
-            if (typeFaceButton != null) {
-                btnSnackbarActionButton.typeface = typeFaceButton
+            btnSnackbarActionButton.setTextColor(actionTextColor)
+            if (tfActionBtn != null) {
+                btnSnackbarActionButton.typeface = tfActionBtn
             }
 
             if (action != null) {

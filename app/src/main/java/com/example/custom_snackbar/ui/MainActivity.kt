@@ -1,8 +1,9 @@
-package com.example.custom_snackbar
+package com.example.custom_snackbar.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.custom_snackbar.R
 import com.example.custom_snackbar.utils.themeConst
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,12 +13,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        withCL.setOnClickListener {
+        btnWithCL.setOnClickListener {
             startNewActivity(CoordinatorLayoutAct::class.java)
         }
 
-        withoutCL.setOnClickListener {
+        btnWithoutCL.setOnClickListener {
             startNewActivity(SimpleAct::class.java)
+        }
+
+        btnCustomView.setOnClickListener {
+            startNewActivity(CustomViewAct::class.java)
         }
     }
 

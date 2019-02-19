@@ -260,6 +260,33 @@
             </LinearLayout>
 
             <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:gravity="start|center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnActionTextColor"
+                        android:text="@string/lbl_action_button_text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                        android:background="@drawable/ic_border"
+                        android:padding="2dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <View
+                            android:id="@+id/llActionTextColor"
+                            android:layout_width="150dp"
+                            android:layout_height="23dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
@@ -363,20 +390,8 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                <androidx.appcompat.widget.AppCompatButton
-                        android:text="@string/lbl_show_custom_view"
-                        android:id="@+id/showCustomView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
         </LinearLayout>
 
     </ScrollView>
+
 </LinearLayout>

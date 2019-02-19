@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.CustomViewAct"
+        android:padding="16dp"
+        android:background="@color/layout_bg">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:padding="5dp"
+                android:text="@string/lbl_time_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <RadioGroup
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbLengthIndefinite"
+                    android:text="@string/lbl_length_indefinite"
+                    android:layout_width="match_parent"
+                    android:checked="true"
+                    android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbLengthShort"
+                    android:text="@string/lbl_length_short"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbLengthLong"
+                    android:text="@string/lbl_length_long"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:text="Padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:text="@string/lbl_dash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPaddingIndicator"
+                    android:text="@string/lbl_zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/sbPadding"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="25"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:text="@string/lbl_show_custom_view"
+                android:id="@+id/btnShowCustomView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:text="@string/lbl_hide_custom_view"
+                android:id="@+id/btnHideCustomView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

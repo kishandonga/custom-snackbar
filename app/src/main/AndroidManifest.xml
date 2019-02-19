@@ -11,11 +11,13 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SimpleAct">
+        <activity android:name=".ui.CustomViewAct">
         </activity>
-        <activity android:name=".CoordinatorLayoutAct">
+        <activity android:name=".ui.SimpleAct">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.CoordinatorLayoutAct">
+        </activity>
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
