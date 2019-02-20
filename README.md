@@ -28,9 +28,12 @@ Custom snackbar same as Default Control of the android Snackbar
 Make background semi-transparent and add corner radius for the better look
 <img width="441" height="150" src="images/img_2.png"/><br/>
 Custom view according to your requirements
-<img width="627" height="150" src="images/img_3.png"/><br/>
+<img width="441" height="105" src="images/img_3.png"/><br/>
 
 ## Examples
+
+#### Refer This Sample Code
+For, the more infromation refer this sample code [here](app/src/main/java/com/example/custom_snackbar/ui/)
 
 #### With Coordinator Layout
 Passing the activity context and coordinator layout as view in the custom snackbar constractor as shown below
