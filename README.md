@@ -112,7 +112,7 @@ CustomSnackbar(this).show {
 |textTypeface         | Typeface  | Change the message text Typeface, default value is Typeface.NORMAL
 |actionTypeface       | Typeface  | Change the action button text Typeface, default value is Typeface.NORMAL
 |withAction           | String Resource or String and Snackbar as anonymous function | pass the first argument as action button name and default value is empty string, second argument as lamda function with snackbar reference
-|withCustomView       | View as anonymous function  | when view initialze then given view return here for your further use
+|withCustomView       | View as anonymous function  | when custom view initialze then passing here for your further use
 |show	              | Void Or Koltin DSL | Show the snackbar view
 |dismiss              | Void Or Unit | Dismiss the snackbar view
 |getView              | Void and return View? | Same as withCustomView but it will return null value too
