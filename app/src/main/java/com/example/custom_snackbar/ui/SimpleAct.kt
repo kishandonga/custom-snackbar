@@ -147,7 +147,6 @@ class SimpleAct : AppCompatActivity() {
                 textColor(textColor)
                 backgroundColor(bgColor)
                 border(sbBorderWidth.progress, borderColor)
-                cornerRadius(sbCornerRadius.progress.toFloat())
                 padding(sbPadding.progress)
                 cornerRadius(sbCornerRadius.progress.toFloat())
                 duration(timeDuration)
