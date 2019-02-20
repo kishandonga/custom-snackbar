@@ -127,7 +127,11 @@ class CustomSnackbar(private val context: Context) {
         this.textColor = color
     }
 
-    fun actionTextColor(actionTextColor: Int) {
+    fun actionTextColorRes(@ColorRes colorId: Int) {
+        actionTextColor(ContextCompat.getColor(context, colorId))
+    }
+
+    fun actionTextColor(@ColorInt actionTextColor: Int) {
         this.actionTextColor = actionTextColor
     }
 
