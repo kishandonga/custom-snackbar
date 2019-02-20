@@ -24,7 +24,7 @@ dependencies {
 ## Screenshots
 
 - Custom snackbar same as Default Control of the android Snackbar
-![](images/img_1.png =441x150)
+<img width="441" height="150" src="images/img_1.png"/>
 - Make background semi-transparent and add corner radius for the better look
 ![](images/img_2.png)
 - Custom view according to your requirements
