@@ -23,12 +23,12 @@ dependencies {
 
 ## Screenshots
 
-Custom snackbar same as Default Control of the android Snackbar
-<img width="441" height="150" src="images/img_1.png"/><br/>
-Make background semi-transparent and add corner radius for the better look
-<img width="441" height="150" src="images/img_2.png"/><br/>
-Custom view according to your requirements
-<img width="441" height="105" src="images/img_3.png"/><br/>
+Custom snackbar same as Default Control of the android Snackbar 
+<img width="441" height="150" src="images/img_1.png"/>  
+Make background semi-transparent and add corner radius for the better look 
+<img width="441" height="150" src="images/img_2.png"/>  
+Custom view according to your requirements 
+<img width="441" height="105" src="images/img_3.png"/>  
 
 ## Examples
 
@@ -46,7 +46,7 @@ Only pass the activity context in the custom snackbar constractor as shown below
 ```kotlin
 CustomSnackbar(this).show {...}
 ``` 
-Koltin
+Kotlin
 ```kotlin
 CustomSnackbar(this, root).show {
     textTypeface(BOLD | BOLD_ITALIC | ITALIC | NORMAL | CUSTOM)
@@ -70,7 +70,7 @@ CustomSnackbar(this, root).show {
 
 #### Custom View
 
-Koltin
+Kotlin
 ```kotlin
 CustomSnackbar(this).show {
     customView(R.layout.snack_layout)
