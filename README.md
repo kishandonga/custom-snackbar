@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.kishandonga:custom-snackbar:1.0'
+    implementation 'com.github.kishandonga:custom-snackbar:1.1'
 }
 
 //required lib modules
@@ -107,7 +107,7 @@ CustomSnackbar(this).show {
     }
 }
 ```
-
+Java
 ```java
 final CustomSnackbar sb = new CustomSnackbar(MainActivity.this);
 sb.customView(R.layout.snack_layout);
@@ -148,8 +148,14 @@ CustomSnackbar(this).show {
     ...
 }
 ```
-
+Java
 ```java
+CustomSnackbar sb = new CustomSnackbar(MainActivity.this);
+sb.drawableRes(R.drawable.ic_gradient);
+sb.message("Test Message...");
+sb.padding(15);
+sb.duration(Snackbar.LENGTH_LONG);
+sb.show();
 ```
 
 ## API Documents
