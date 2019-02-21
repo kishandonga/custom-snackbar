@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.custom_snackbar.R
 import com.example.custom_snackbar.utils.themeConst
 import com.google.android.material.snackbar.Snackbar
-import com.kishandonga.snackbar.CustomSnackbar
+import com.kishandonga.csbx.CustomSnackbar
 import kotlinx.android.synthetic.main.activity_custom_view.*
 
 class CustomViewAct : AppCompatActivity() {

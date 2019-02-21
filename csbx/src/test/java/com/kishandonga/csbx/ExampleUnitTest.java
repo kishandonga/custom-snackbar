@@ -1,4 +1,4 @@
-package com.kishandonga.snackbar;
+package com.kishandonga.csbx;
 
 import org.junit.Test;
 

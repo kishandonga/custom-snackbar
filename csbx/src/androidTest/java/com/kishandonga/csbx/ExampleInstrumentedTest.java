@@ -1,4 +1,4 @@
-package com.kishandonga.snackbar;
+package com.kishandonga.csbx;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

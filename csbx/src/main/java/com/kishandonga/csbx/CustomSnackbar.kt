@@ -1,6 +1,6 @@
 @file:Suppress("MemberVisibilityCanBePrivate", "unused")
 
-package com.kishandonga.snackbar
+package com.kishandonga.csbx
 
 import android.app.Activity
 import android.content.Context
@@ -15,7 +15,6 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.children
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.SnackbarContentLayout
 
@@ -150,7 +149,7 @@ class CustomSnackbar(private val context: Context) {
     private fun makeSnackbar(view: View) {
         snackbar = Snackbar.make(view, message, duration)
         val snackbarLayout = snackbar.view as Snackbar.SnackbarLayout // Frame Layout
-        val snackContentLayout = snackbarLayout.children.first() as SnackbarContentLayout // Linear Layout
+        val snackContentLayout = snackbarLayout.getChildAt(0) as SnackbarContentLayout // Linear Layout
 
         if (backgroundColor != 0) {
             drawable.setColor(backgroundColor)
@@ -174,13 +173,12 @@ class CustomSnackbar(private val context: Context) {
         }
 
         if (customView == null) {
-            val contentLayoutIterator = snackContentLayout.children.iterator()
-            val tvSnackbarTextView = contentLayoutIterator.next() as AppCompatTextView
+            val tvSnackbarTextView = snackContentLayout.getChildAt(0) as AppCompatTextView
             tvSnackbarTextView.setTextColor(textColor)
             if (tfTextView != null) {
                 tvSnackbarTextView.typeface = tfTextView
             }
-            val btnSnackbarActionButton = contentLayoutIterator.next() as AppCompatButton
+            val btnSnackbarActionButton = snackContentLayout.getChildAt(1) as AppCompatButton
             btnSnackbarActionButton.setTextColor(actionTextColor)
             if (tfActionBtn != null) {
                 btnSnackbarActionButton.typeface = tfActionBtn

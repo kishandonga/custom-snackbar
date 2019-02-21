@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import com.example.custom_snackbar.R
 import com.example.custom_snackbar.utils.themeConst
 import com.google.android.material.snackbar.Snackbar
-import com.kishandonga.snackbar.CustomSnackbar
+import com.kishandonga.csbx.CustomSnackbar
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import kotlinx.android.synthetic.main.content_app.*

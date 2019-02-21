@@ -1,11 +1,14 @@
 # Android Custom Snackbar
 
+[![](https://jitpack.io/v/kishandonga/custom-snackbar.svg)](https://jitpack.io/#kishandonga/custom-snackbar)
+
 Android custom snackbar is derived from the android default snackbar control  
 - Use it in Activity or Fragment
 - Change the background and text color easily
 - Custom view applies in the snackbar control
 - Typeface applies easily on text
 - Corner radius and Padding applies
+- Androidx support
 - More to find out yourself
 
 ## Installation
@@ -17,8 +20,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.kishandonga:custom-snackbar:$latest_version'
+    implementation 'com.github.kishandonga:custom-snackbar:1.0'
 }
+
+//required support lib modules
+implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
+implementation 'com.google.android.material:material:1.1.0-alpha03'
 ```
 
 ## Screenshots
