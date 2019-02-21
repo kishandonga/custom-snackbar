@@ -38,10 +38,22 @@ class CustomSnackbar(private val context: Context) {
     private var coordinateView: View? = null
     private var tfTextView: Typeface? = null
     private var tfActionBtn: Typeface? = null
+    private var customDrawable: GradientDrawable? = null
     private lateinit var snackbar: Snackbar
 
     constructor(context: Context, view: View) : this(context) {
         coordinateView = view
+    }
+
+    fun drawableRes(@DrawableRes drawableId: Int) {
+        val drw = ContextCompat.getDrawable(context, drawableId)
+        if (drw is GradientDrawable) {
+            drawable(drw)
+        }
+    }
+
+    fun drawable(drawable: GradientDrawable?) {
+        this.customDrawable = drawable
     }
 
     fun textTypeface(textTypeface: Typeface) {
@@ -151,14 +163,17 @@ class CustomSnackbar(private val context: Context) {
         val snackbarLayout = snackbar.view as Snackbar.SnackbarLayout // Frame Layout
         val snackContentLayout = snackbarLayout.getChildAt(0) as SnackbarContentLayout // Linear Layout
 
-        if (backgroundColor != 0) {
-            drawable.setColor(backgroundColor)
+        if (customDrawable == null) {
+            if (backgroundColor != 0) {
+                drawable.setColor(backgroundColor)
+            } else {
+                drawable = snackbarLayout.background as GradientDrawable
+            }
+            drawable.cornerRadius = cornerRadius
+            drawable.setStroke(borderWidth, borderColor)
         } else {
-            drawable = snackbarLayout.background as GradientDrawable
+            drawable = customDrawable as GradientDrawable
         }
-
-        drawable.cornerRadius = cornerRadius
-        drawable.setStroke(borderWidth, borderColor)
 
         val pLeft = snackbarLayout.paddingLeft
         val pRight = snackbarLayout.paddingRight

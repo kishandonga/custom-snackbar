@@ -30,4 +30,5 @@
     <string name="lbl_hide_custom_view">Hide Custom View</string>
     <string name="lbl_with_custom_view">With Custom View</string>
     <string name="lbl_action_button_text_color">Action Button Text Color</string>
+    <string name="lbl_with_drawable">With Drawable</string>
 </resources>

@@ -11,6 +11,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.DrawableAct">
+        </activity>
         <activity android:name=".ui.CustomViewAct">
         </activity>
         <activity android:name=".ui.SimpleAct">

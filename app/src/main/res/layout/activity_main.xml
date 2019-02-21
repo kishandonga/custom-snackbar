@@ -49,4 +49,11 @@
             android:layout_height="wrap_content"
             android:text="@string/lbl_with_custom_view"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDrawableAct"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_with_drawable"/>
+
 </tools:LinearLayout>

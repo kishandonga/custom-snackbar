@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         btnCustomView.setOnClickListener {
             startNewActivity(CustomViewAct::class.java)
         }
+
+        btnDrawableAct.setOnClickListener {
+            startNewActivity(DrawableAct::class.java)
+        }
     }
 
     private fun startNewActivity(cls: Class<*>) {

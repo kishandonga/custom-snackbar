@@ -8,7 +8,7 @@ Android custom snackbar is derived from the android default snackbar control
 - Custom view applies in the snackbar control
 - Typeface applies easily on text
 - Corner radius and Padding applies
-- Androidx support
+- Androidx supported
 - More to find out yourself
 
 ## Installation
@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.github.kishandonga:custom-snackbar:1.0'
 }
 
-//required support lib modules
+//required lib modules
 implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
 implementation 'com.google.android.material:material:1.1.0-alpha03'
 ```
@@ -96,33 +96,54 @@ CustomSnackbar(this).show {
 ```java
 ```
 
+#### With Drawable
+
+Kotlin
+```kotlin
+CustomSnackbar(this).show {
+    drawableRes(R.drawable.ic_gradient)
+    ...
+}
+```
+
+```java
+```
+
 ## API Documents
 
 |Function             |Parameter            |Description          |
 |:-------------------:|:-------------------:|:-------------------:|
 |actionTextColor      | Integer Color Value | Change the action button text color, default value is colorAccent
-|actionTextColorRes   | Color Resource      | Change the action button text color, default value is colorAccent
+|actionTextColorRes   | Color Resource      | Refer actionTextColor function description
 |textColor            | Integer Color Value | Change the message text color, default value is white color
-|textColorRes         | Color Resource      | Change the message text color, default value is white color
+|textColorRes         | Color Resource      | Refer textColor function description
 |backgroundColor      | Integer Color Value | Change the background color of the snackbar, default value is same as snackbar background also you can't make it transparent
-|backgroundColorRes   | Color Resource      | Change the background color of the snackbar, default value is same as snackbar background also you can't make it transparent
+|backgroundColorRes   | Color Resource      | Refer backgroundColor function description
 |cornerRadius	      | Float Value         | Apply corner radius all the side (Left, Top, Right, Bottom), default value is 0
-|cornerRadiusRes      | Dimension Resource  | Apply corner radius all the side (Left, Top, Right, Bottom), default value is 0
+|cornerRadiusRes      | Dimension Resource  | Refer cornerRadius function description
 |border		          | Width as Integer and Integer Color Value   | Apply border width and color around the snackbar, default value of the width is 0 and color is transparent
-|borderRes            | Width as Dimension Resource and Color Resource  | Apply border width and color around the snackbar, default value of the width is 0 and color is transparent
-|customView           | View or Layout Resource  | set the your customized view as snackbar, default value is null view
+|borderRes            | Width as Dimension Resource and Color Resource  | Refer border function description
+|customView           | View or Layout Resource  | set the your customized view as snackbar, default value is null also when you apply custom view then other api are not in use as shown in the example code
 |message              | String  | set the message as string and default value is empty string
-|messageRes           | String Resource  | set the message as string and default value is empty string
+|messageRes           | String Resource  | Refer message function description
 |duration             | Integer Value  | set the time duration default value is Snackbar.LENGTH_SHORT
 |padding              | Integer Value  | apply the padding at the (Left, Right, Bottom) side, default value is 0
-|paddingRes           | Dimension Resource  | apply the padding at the (Left, Right, Bottom) side, default value is 0
+|paddingRes           | Dimension Resource  | Refer padding function description
 |textTypeface         | Typeface  | Change the message text Typeface, default value is Typeface.NORMAL
 |actionTypeface       | Typeface  | Change the action button text Typeface, default value is Typeface.NORMAL
 |withAction           | String Resource or String and Snackbar as anonymous function | pass the first argument as action button name and default value is empty string, second argument as lamda function with snackbar reference
 |withCustomView       | View as anonymous function  | when custom view initialze then passing here for your further use
+|drawable             | GradientDrawable | set the gradient drawable as snackbar background, default value is null also when you apply drawable then background color, cornerRadius, border width and color api are not in use as shown in the example code
+|drawableRes          | Drawable Resource| Refer drawable function description
 |show	              | Void Or Koltin DSL | Show the snackbar view
 |dismiss              | Void Or Unit | Dismiss the snackbar view
 |getView              | Void and return View? | Same as withCustomView but it will return null value too
+
+
+### About me
+
+Kishan Donga ([@ikishan92](https://twitter.com/ikishan92))  
+I am mobility developer.
 
 
 
