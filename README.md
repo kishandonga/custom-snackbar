@@ -37,6 +37,8 @@ Make background semi-transparent and add corner radius for the better look<br/>
 <img width="441" height="150" src="images/img_2.png"/><br/><br/>  
 Custom view according to your requirements<br/> 
 <img width="441" height="105" src="images/img_3.png"/><br/><br/>  
+Apply gradient in the snackbar background<br/> 
+<img width="441" height="78" src="images/img_4.png"/><br/><br/> 
 </div>
 
 ## Examples
@@ -73,8 +75,21 @@ CustomSnackbar(this, root).show {
     }
 }
 ```
-
+Java
 ```java
+CustomSnackbar sb = new CustomSnackbar(MainActivity.this);
+sb.message("Testing Message...");
+sb.padding(15);
+sb.cornerRadius(15);
+sb.duration(Snackbar.LENGTH_LONG);
+sb.withAction(android.R.string.ok, new Function1<Snackbar, Unit>() {
+    @Override
+    public Unit invoke(Snackbar snackbar) {
+        snackbar.dismiss();
+        return null;
+    }
+});
+sb.show();
 ```
 
 #### Custom View
@@ -94,6 +109,34 @@ CustomSnackbar(this).show {
 ```
 
 ```java
+final CustomSnackbar sb = new CustomSnackbar(MainActivity.this);
+sb.customView(R.layout.snack_layout);
+sb.duration(Snackbar.LENGTH_INDEFINITE);
+sb.withCustomView(new Function1<View, Unit>() {
+    @Override
+    public Unit invoke(View view) {
+        view.findViewById(R.id.btnUndo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sb.dismiss();
+            }
+        });
+        return null;
+    }
+});
+sb.show();
+
+// OR Use Like This Way
+
+// View v = sb.getView();
+// if(v != null){
+//    v.findViewById(R.id.btnUndo).setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            sb.dismiss();
+//        }
+//    });
+// }
 ```
 
 #### With Drawable
