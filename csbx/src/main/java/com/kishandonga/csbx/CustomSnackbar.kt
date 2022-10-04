@@ -106,7 +106,12 @@ class CustomSnackbar(private val context: Context) {
     }
 
     fun borderRes(@DimenRes dimenId: Int, @ColorRes colorId: Int) {
-        border(context.resources.getDimension(dimenId).toInt(), ContextCompat.getColor(context, colorId))
+        border(
+            context.resources.getDimension(dimenId).toInt(), ContextCompat.getColor(
+                context,
+                colorId
+            )
+        )
     }
 
     fun border(width: Int, @ColorInt color: Int) {
@@ -160,8 +165,10 @@ class CustomSnackbar(private val context: Context) {
 
     private fun makeSnackbar(view: View) {
         snackbar = Snackbar.make(view, message, duration)
-        val snackbarLayout = snackbar.view as Snackbar.SnackbarLayout // Frame Layout
-        val snackContentLayout = snackbarLayout.getChildAt(0) as SnackbarContentLayout // Linear Layout
+        val snackbarView = snackbar.view
+        val snackbarLayout = snackbarView as Snackbar.SnackbarLayout // Frame Layout
+        val snackContentLayout =
+            snackbarLayout.getChildAt(0) as SnackbarContentLayout // Linear Layout
 
         if (customDrawable == null) {
             if (backgroundColor != 0) {
