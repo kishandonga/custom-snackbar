@@ -191,8 +191,12 @@ sb.show();
 
 ### About me
 
-Kishan Donga ([@ikishan92](https://twitter.com/ikishan92))  
-I am mobility developer.
+I'm Kishan Donga and you can connect with me via below links, I am a developer and I love to create innovations.
+
+LinkedIn [@ikd96](https://www.linkedin.com/in/ikd96/) 
+Email [kishandonga.92@gmail.com](mailto:kishandonga.92@gmail.com)
+Twitter [@ikishan96](https://twitter.com/ikishan96) 
+Instagram [@ikishan96](https://www.instagram.com/ikishan96/)
 
 
 
