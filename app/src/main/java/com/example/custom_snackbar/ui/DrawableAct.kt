@@ -8,55 +8,62 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.custom_snackbar.R
+import com.example.custom_snackbar.databinding.ActivityDrawableBinding
 import com.example.custom_snackbar.utils.themeConst
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
-import kotlinx.android.synthetic.main.activity_drawable.*
 
 class DrawableAct : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDrawableBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val themeConst = intent.getIntExtra(themeConst, 0)
         setTheme(if (themeConst == 0) R.style.AppCompat_ActionBar else R.style.Material_ActionBar)
 
-        setContentView(R.layout.activity_drawable)
+        binding = ActivityDrawableBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         title = "Custom Drawable"
 
         var textColor = Color.WHITE
         var actionTxtColor = ContextCompat.getColor(this, R.color.colorAccent)
 
-        btnActionTextColor.setOnClickListener {
+        binding.btnActionTextColor.setOnClickListener {
             ColorPickerDialog.Builder(this)
                 .setTitle("ColorPicker Dialog")
-                .setPositiveButton(getString(android.R.string.ok), ColorEnvelopeListener { envelope, _ ->
-                    llActionTextColor.setBackgroundColor(envelope.color)
-                    actionTxtColor = envelope.color
-                })
+                .setPositiveButton(
+                    getString(android.R.string.ok),
+                    ColorEnvelopeListener { envelope, _ ->
+                        binding.llActionTextColor.setBackgroundColor(envelope.color)
+                        actionTxtColor = envelope.color
+                    })
                 .setNegativeButton(getString(android.R.string.cancel)) { di: DialogInterface, _: Int ->
                     di.cancel()
                 }
                 .show()
         }
 
-        btnTextColor.setOnClickListener {
+        binding.btnTextColor.setOnClickListener {
             ColorPickerDialog.Builder(this)
                 .setTitle("ColorPicker Dialog")
-                .setPositiveButton(getString(android.R.string.ok), ColorEnvelopeListener { envelope, _ ->
-                    llTextColor.setBackgroundColor(envelope.color)
-                    textColor = envelope.color
-                })
+                .setPositiveButton(
+                    getString(android.R.string.ok),
+                    ColorEnvelopeListener { envelope, _ ->
+                        binding.llTextColor.setBackgroundColor(envelope.color)
+                        textColor = envelope.color
+                    })
                 .setNegativeButton(getString(android.R.string.cancel)) { di: DialogInterface, _: Int ->
                     di.cancel()
                 }
                 .show()
         }
 
-        sbPadding.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.sbPadding.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                tvPaddingIndicator.text = p0?.progress.toString()
+                binding.tvPaddingIndicator.text = p0?.progress.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -68,18 +75,18 @@ class DrawableAct : AppCompatActivity() {
 
         var snackbar: CustomSnackbar? = null
 
-        btnShow.setOnClickListener {
+        binding.btnShow.setOnClickListener {
 
             val timeDuration: Int = when {
-                rbLengthIndefinite.isChecked -> Snackbar.LENGTH_INDEFINITE
-                rbLengthLong.isChecked -> Snackbar.LENGTH_LONG
+                binding.rbLengthIndefinite.isChecked -> Snackbar.LENGTH_INDEFINITE
+                binding.rbLengthLong.isChecked -> Snackbar.LENGTH_LONG
                 else -> Snackbar.LENGTH_SHORT
             }
 
             val typeface: Typeface = when {
-                rbBold.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD)
-                rbBoldItalic.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD_ITALIC)
-                rbItalic.isChecked -> Typeface.defaultFromStyle(Typeface.ITALIC)
+                binding.rbBold.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD)
+                binding.rbBoldItalic.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD_ITALIC)
+                binding.rbItalic.isChecked -> Typeface.defaultFromStyle(Typeface.ITALIC)
                 else -> Typeface.defaultFromStyle(Typeface.NORMAL)
             }
 
@@ -89,10 +96,10 @@ class DrawableAct : AppCompatActivity() {
                 actionTextColor(actionTxtColor)
                 textTypeface(typeface)
                 actionTypeface(typeface)
-                padding(sbPadding.progress)
+                padding(binding.sbPadding.progress)
                 duration(timeDuration)
                 message("Testing Message...")
-                if (rbWithAction.isChecked) {
+                if (binding.rbWithAction.isChecked) {
                     withAction(android.R.string.ok) {
                         it.dismiss()
                     }
@@ -100,8 +107,9 @@ class DrawableAct : AppCompatActivity() {
             }
         }
 
-        btnHide.setOnClickListener {
+        binding.btnHide.setOnClickListener {
             snackbar?.dismiss()
         }
     }
+
 }

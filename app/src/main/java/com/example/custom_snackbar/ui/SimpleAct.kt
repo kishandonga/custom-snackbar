@@ -8,21 +8,25 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.custom_snackbar.R
+import com.example.custom_snackbar.databinding.ActivitySimpleBinding
 import com.example.custom_snackbar.utils.themeConst
 import com.google.android.material.snackbar.Snackbar
 import com.kishandonga.csbx.CustomSnackbar
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
-import kotlinx.android.synthetic.main.content_app.*
 
 class SimpleAct : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySimpleBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val themeConst = intent.getIntExtra(themeConst, 0)
         setTheme(if (themeConst == 0) R.style.AppCompat_ActionBar else R.style.Material_ActionBar)
 
-        setContentView(R.layout.activity_simple)
+        binding = ActivitySimpleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         title = getString(R.string.lbl_without_coordinator_layout)
 
         var textColor = Color.WHITE
@@ -30,61 +34,58 @@ class SimpleAct : AppCompatActivity() {
         var borderColor = Color.TRANSPARENT
         var actionTxtColor = ContextCompat.getColor(this, R.color.colorAccent)
 
-        btnActionTextColor.setOnClickListener {
-            ColorPickerDialog.Builder(this)
-                .setTitle("ColorPicker Dialog")
-                .setPositiveButton(getString(android.R.string.ok), ColorEnvelopeListener { envelope, _ ->
-                    llActionTextColor.setBackgroundColor(envelope.color)
+        binding.content.btnActionTextColor.setOnClickListener {
+            ColorPickerDialog.Builder(this).setTitle("ColorPicker Dialog").setPositiveButton(
+                getString(android.R.string.ok),
+                ColorEnvelopeListener { envelope, _ ->
+                    binding.content.llActionTextColor.setBackgroundColor(envelope.color)
                     actionTxtColor = envelope.color
                 })
                 .setNegativeButton(getString(android.R.string.cancel)) { di: DialogInterface, _: Int ->
                     di.cancel()
-                }
-                .show()
+                }.show()
         }
 
-        btnTextColor.setOnClickListener {
-            ColorPickerDialog.Builder(this)
-                .setTitle("ColorPicker Dialog")
-                .setPositiveButton(getString(android.R.string.ok), ColorEnvelopeListener { envelope, _ ->
-                    llTextColor.setBackgroundColor(envelope.color)
+        binding.content.btnTextColor.setOnClickListener {
+            ColorPickerDialog.Builder(this).setTitle("ColorPicker Dialog").setPositiveButton(
+                getString(android.R.string.ok),
+                ColorEnvelopeListener { envelope, _ ->
+                    binding.content.llTextColor.setBackgroundColor(envelope.color)
                     textColor = envelope.color
                 })
                 .setNegativeButton(getString(android.R.string.cancel)) { di: DialogInterface, _: Int ->
                     di.cancel()
-                }
-                .show()
+                }.show()
         }
 
-        btnBgColor.setOnClickListener {
-            ColorPickerDialog.Builder(this)
-                .setTitle("ColorPicker Dialog")
-                .setPositiveButton(getString(android.R.string.ok), ColorEnvelopeListener { envelope, _ ->
-                    llBgColor.setBackgroundColor(envelope.color)
+        binding.content.btnBgColor.setOnClickListener {
+            ColorPickerDialog.Builder(this).setTitle("ColorPicker Dialog").setPositiveButton(
+                getString(android.R.string.ok),
+                ColorEnvelopeListener { envelope, _ ->
+                    binding.content.llBgColor.setBackgroundColor(envelope.color)
                     bgColor = envelope.color
                 })
                 .setNegativeButton(getString(android.R.string.cancel)) { di: DialogInterface, _: Int ->
                     di.cancel()
-                }
-                .show()
+                }.show()
         }
 
-        btnBorderColor.setOnClickListener {
-            ColorPickerDialog.Builder(this)
-                .setTitle("ColorPicker Dialog")
-                .setPositiveButton(getString(android.R.string.ok), ColorEnvelopeListener { envelope, _ ->
-                    llBorderColor.setBackgroundColor(envelope.color)
+        binding.content.btnBorderColor.setOnClickListener {
+            ColorPickerDialog.Builder(this).setTitle("ColorPicker Dialog").setPositiveButton(
+                getString(android.R.string.ok),
+                ColorEnvelopeListener { envelope, _ ->
+                    binding.content.llBorderColor.setBackgroundColor(envelope.color)
                     borderColor = envelope.color
                 })
                 .setNegativeButton(getString(android.R.string.cancel)) { di: DialogInterface, _: Int ->
                     di.cancel()
-                }
-                .show()
+                }.show()
         }
 
-        sbPadding.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.content.sbPadding.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                tvPaddingIndicator.text = p0?.progress.toString()
+                binding.content.tvPaddingIndicator.text = p0?.progress.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -94,9 +95,10 @@ class SimpleAct : AppCompatActivity() {
             }
         })
 
-        sbCornerRadius.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.content.sbCornerRadius.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                tvCornerRadiusIndicator.text = p0?.progress.toString()
+                binding.content.tvCornerRadiusIndicator.text = p0?.progress.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -106,9 +108,10 @@ class SimpleAct : AppCompatActivity() {
             }
         })
 
-        sbBorderWidth.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.content.sbBorderWidth.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                tvBorderIndicator.text = p0?.progress.toString()
+                binding.content.tvBorderIndicator.text = p0?.progress.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -120,24 +123,24 @@ class SimpleAct : AppCompatActivity() {
 
         var snackbar: CustomSnackbar? = null
 
-        btnShow.setOnClickListener {
+        binding.content.btnShow.setOnClickListener {
 
-            val msg = edMessage?.text?.trim().toString()
+            val msg = binding.content.edMessage.text?.trim().toString()
             if (msg.isBlank() || msg.isEmpty()) {
-                edMessage.error = "Please Enter Message"
+                binding.content.edMessage.error = "Please Enter Message"
                 return@setOnClickListener
             }
 
             val timeDuration: Int = when {
-                rbLengthIndefinite.isChecked -> Snackbar.LENGTH_INDEFINITE
-                rbLengthLong.isChecked -> Snackbar.LENGTH_LONG
+                binding.content.rbLengthIndefinite.isChecked -> Snackbar.LENGTH_INDEFINITE
+                binding.content.rbLengthLong.isChecked -> Snackbar.LENGTH_LONG
                 else -> Snackbar.LENGTH_SHORT
             }
 
             val typeface: Typeface = when {
-                rbBold.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD)
-                rbBoldItalic.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD_ITALIC)
-                rbItalic.isChecked -> Typeface.defaultFromStyle(Typeface.ITALIC)
+                binding.content.rbBold.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD)
+                binding.content.rbBoldItalic.isChecked -> Typeface.defaultFromStyle(Typeface.BOLD_ITALIC)
+                binding.content.rbItalic.isChecked -> Typeface.defaultFromStyle(Typeface.ITALIC)
                 else -> Typeface.defaultFromStyle(Typeface.NORMAL)
             }
 
@@ -146,13 +149,13 @@ class SimpleAct : AppCompatActivity() {
                 actionTypeface(typeface)
                 textColor(textColor)
                 backgroundColor(bgColor)
-                border(sbBorderWidth.progress, borderColor)
-                padding(sbPadding.progress)
-                cornerRadius(sbCornerRadius.progress.toFloat())
+                border(binding.content.sbBorderWidth.progress, borderColor)
+                padding(binding.content.sbPadding.progress)
+                cornerRadius(binding.content.sbCornerRadius.progress.toFloat())
                 duration(timeDuration)
                 actionTextColor(actionTxtColor)
                 message(msg)
-                if (rbWithAction.isChecked) {
+                if (binding.content.rbWithAction.isChecked) {
                     withAction(android.R.string.ok) {
                         it.dismiss()
                     }
@@ -160,7 +163,7 @@ class SimpleAct : AppCompatActivity() {
             }
         }
 
-        btnHide.setOnClickListener {
+        binding.content.btnHide.setOnClickListener {
             snackbar?.dismiss()
         }
     }

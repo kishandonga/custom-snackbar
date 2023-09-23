@@ -31,4 +31,7 @@
     <string name="lbl_with_custom_view">With Custom View</string>
     <string name="lbl_action_button_text_color">Action Button Text Color</string>
     <string name="lbl_with_drawable">With Drawable</string>
+    <string name="lbl_padding">Padding</string>
+    <string name="lbl_undo">UNDO</string>
+    <string name="custom_msg">Are you sure? do you want to undo this operation?</string>
 </resources>
